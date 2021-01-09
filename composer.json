@@ -1,0 +1,37 @@
+{
+  "name": "mehul0810/simplr-docs",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "description": "Simplr Docs - a Knowledge Base and Documentation Plugin for WordPress",
+  "homepage": "https://simplrwp.com/",
+  "require": {
+      "composer/installers": "~1.2"
+  },
+  "require-dev": {
+      "dealerdirect/phpcodesniffer-composer-installer": "*",
+      "phpcompatibility/phpcompatibility-wp": "*",
+      "wp-coding-standards/wpcs": "*",
+      "phpunit/phpunit": "*"
+  },
+  "keywords": [
+      "wordpress",
+      "plugin",
+      "donations"
+  ],
+  "support": {
+      "issues": "https://github.com/mehul0810/simplr-docs/issues"
+  },
+  "scripts": {
+      "test": "./vendor/bin/phpunit --bootstrap tests/src/bootstrap.php --no-configuration tests/src/"
+  },
+  "autoload": {
+      "psr-4": {
+          "SimplrDocs\\": "src/"
+      }
+  },
+  "config": {
+      "platform": {
+          "php": "5.6.40"
+      }
+  }
+}
