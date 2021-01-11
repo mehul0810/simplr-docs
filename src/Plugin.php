@@ -1,6 +1,9 @@
 <?php
 namespace SimplrDocs;
 
+use SimplrDocs\Includes as Includes;
+use SimplrDocs\Admin as Admin;
+
 // Bailout, if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -42,7 +45,15 @@ final class Plugin {
 	 * @return void
 	 */
 	public function register_services() {
+		// Load frontend files.
+		new Includes\Actions();
+		new Includes\Filters();
 
+		// Load Admin files.
+		if ( is_admin() ) {
+			new Admin\Actions();
+			new Admin\Filters();
+		}
 	}
 
 	/**
