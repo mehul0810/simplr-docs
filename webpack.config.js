@@ -13,8 +13,8 @@ const config = {
 	mode,
 
 	entry: {
-		'simplr-docs': [ './assets/src/css/frontend/main.scss', './assets/src/js/frontend/main.js' ],
-		'simplr-docs-admin': [ './assets/src/css/admin/main.scss', './assets/src/js/admin/main.js' ],
+		'simplrdocs': [ './assets/src/css/frontend/main.scss', './assets/src/js/frontend/main.js' ],
+		'simplrdocs-admin': [ './assets/src/css/admin/main.scss', './assets/src/js/admin/main.js' ],
 	},
 	output: {
 		path: path.join( __dirname, './assets/dist/' ),
