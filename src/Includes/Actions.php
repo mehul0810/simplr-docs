@@ -140,7 +140,7 @@ class Actions {
 		];
 
 		$args = [
-			'hierarchical'          => false,
+			'hierarchical'          => true,
 			'labels'                => $labels,
 			'show_ui'               => true,
 			'show_admin_column'     => true,
