@@ -38,6 +38,7 @@ class Actions {
 	 */
 	public function init_docs() {
 		$this->register_post_type();
+		$this->register_taxonomy();
 	}
 
 	/**
@@ -106,6 +107,53 @@ class Actions {
 		register_post_type( $post_type_slug, $args );
 
 		// Unset the variables.
+		unset( $labels );
+		unset( $args );
+	}
+
+	/**
+	 * Register Taxonomy.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 *
+	 * @return void
+	 */
+	public function register_taxonomy() {
+		$labels = [
+			'name'                       => _x( 'Sections', 'taxonomy general name', 'simplrdocs' ),
+			'singular_name'              => _x( 'Section', 'taxonomy singular name', 'simplrdocs' ),
+			'search_items'               => __( 'Search Sections', 'simplrdocs' ),
+			'popular_items'              => __( 'Popular Sections', 'simplrdocs' ),
+			'all_items'                  => __( 'All Sections', 'simplrdocs' ),
+			'parent_item'                => null,
+			'parent_item_colon'          => null,
+			'edit_item'                  => __( 'Edit Section', 'simplrdocs' ),
+			'update_item'                => __( 'Update Section', 'simplrdocs' ),
+			'add_new_item'               => __( 'Add New Section', 'simplrdocs' ),
+			'new_item_name'              => __( 'New Section Name', 'simplrdocs' ),
+			'separate_items_with_commas' => __( 'Separate Sections with commas', 'simplrdocs' ),
+			'add_or_remove_items'        => __( 'Add or remove Sections', 'simplrdocs' ),
+			'choose_from_most_used'      => __( 'Choose from the most used Sections', 'simplrdocs' ),
+			'not_found'                  => __( 'No Sections found.', 'simplrdocs' ),
+			'menu_name'                  => __( 'Sections', 'simplrdocs' ),
+		];
+
+		$args = [
+			'hierarchical'          => false,
+			'labels'                => $labels,
+			'show_ui'               => true,
+			'show_admin_column'     => true,
+			'update_count_callback' => '_update_post_term_count',
+			'query_var'             => true,
+			'show_in_rest'          => true,
+			'rewrite'               => [
+				'slug' => apply_filters( 'simplrdocs_section_slug', 'section' ),
+			],
+		];
+
+		register_taxonomy( 'simplrdocs_sections', 'simplrdocs_docs', $args );
+
 		unset( $labels );
 		unset( $args );
 	}
